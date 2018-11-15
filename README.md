@@ -1,4 +1,10 @@
-# ort_tp3
-Repositorio de ORT
+# ORT TP NUEVAS TECNOLOGIAS
 
-JEJEJE
+-- RESTAURANTE --
+
+Finalizado: 
+Login
+
+Funcionalidades Pendientes:
+..
+..
