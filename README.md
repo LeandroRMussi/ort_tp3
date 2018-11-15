@@ -2,9 +2,11 @@
 
 -- RESTAURANTE --
 
-Finalizado: 
+Finalizado:
+ 
 Login
 
 Funcionalidades Pendientes:
+
 ..
 ..
