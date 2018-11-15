@@ -11,3 +11,6 @@ Funcionalidades Pendientes:
 .Registro (Viste hecha)
 .Seleccion de MESA
 .Seleccion de MENU
+
+
+
