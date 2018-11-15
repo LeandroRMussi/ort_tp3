@@ -4,10 +4,10 @@
 
 Finalizado:
  
-Login
+.Login (Falta logout y error al logeo)
 
 Funcionalidades Pendientes:
 
-Registro (Falta poquito)
-..
-..
+.Registro (Viste hecha)
+.Seleccion de MESA
+.Seleccion de MENU
