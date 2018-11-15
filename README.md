@@ -8,5 +8,6 @@ Login
 
 Funcionalidades Pendientes:
 
+Registro (Falta poquito)
 ..
 ..
