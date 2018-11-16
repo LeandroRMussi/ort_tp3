@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace WebApplication1.Controllers
 {
@@ -21,8 +22,13 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+
         public ActionResult Login()
         {
+            if (Session["Usuario"] != null)
+            {
+                return RedirectToAction("UserDashBoard");
+            }
             return View();
         }
 
@@ -37,9 +43,15 @@ namespace WebApplication1.Controllers
                     var obj = db.PerfilUsuario.Where(a => a.Usuario.Equals(objUser.Usuario) && a.Password.Equals(objUser.Password)).FirstOrDefault();
                     if (obj != null)
                     {
-                        Session["UserID"] = obj.IdUsuario.ToString();
-                        Session["UserName"] = obj.Usuario.ToString();
+                        obj.IsActive = true;
+                        db.SaveChanges();
+
+                        Session["IdUsuario"] = obj.IdUsuario.ToString();
+                        Session["Usuario"] = obj.Usuario.ToString();
+                        Session["isActive"] = obj.IsActive.ToString();
+                        FormsAuthentication.SetAuthCookie(obj.Usuario, true);
                         return RedirectToAction("UserDashBoard");
+                        
                     }
                 }
             }
@@ -48,7 +60,7 @@ namespace WebApplication1.Controllers
 
         public ActionResult UserDashBoard()
         {
-            if (Session["UserID"] != null)
+            if (Session["IdUsuario"] != null)
             {
                 return View();
             }
@@ -57,5 +69,15 @@ namespace WebApplication1.Controllers
                 return RedirectToAction("Login");
             }
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LogOff()
+        {
+            Session.Clear();
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Login");
+        }
+
     }
 }
