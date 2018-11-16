@@ -4,13 +4,21 @@
 
 <div style="text-align:center">
     <h1>Esta es una sección privada</h1>
-    <h2>Usuario: @Session["Usuario"].ToString() </h2>
-    <h2>Estado: @Session["isActive"].ToString() </h2>
-</div>
-<div class="navbar-collapse collapse">
-    @using (Html.BeginForm("LogOff", "Home", FormMethod.Post, new { role = "form" }))
+    <br />
+    <h3>Usuario: @Session["Usuario"].ToString() </h3>
+    @if (@Session["isActive"].ToString().AsBool())
     {
-        @Html.AntiForgeryToken()
-        <input type="submit" value="Cerrar sesion" class="btn btn-primary" />
+        <h3>Estado: Activo</h3>
+    }
+    else
+    {
+        <h3>Estado: Desactivado</h3>
     }
 </div>
+    <div class="navbar-collapse collapse">
+        @using (Html.BeginForm("LogOff", "Home", FormMethod.Post, new { role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <input type="submit" value="Cerrar sesion" class="btn btn-primary" />
+        }
+    </div>

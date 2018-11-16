@@ -15,13 +15,6 @@ namespace WebApplication1.Controllers
             return RedirectToAction("Login");
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
 
         public ActionResult Login()
         {
@@ -48,8 +41,8 @@ namespace WebApplication1.Controllers
 
                         Session["IdUsuario"] = obj.IdUsuario.ToString();
                         Session["Usuario"] = obj.Usuario.ToString();
-                        Session["isActive"] = obj.IsActive.ToString();
-                        FormsAuthentication.SetAuthCookie(obj.Usuario, true);
+                        Session["isActive"] = obj.IsActive;
+                        FormsAuthentication.SetAuthCookie(Session["Usuario"].ToString(), true);
                         return RedirectToAction("UserDashBoard");
                         
                     }
