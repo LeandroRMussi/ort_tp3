@@ -4,30 +4,25 @@
 }
 @using (Html.BeginForm("Login", "Home", FormMethod.Post))
 {
-<fieldset>
-    <legend>Login Restaurante</legend>
+    <h2>Restaurante</h2>
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
-    <table class="table table-hover">
-        <tr>
-            <td>@Html.LabelFor(a => a.Usuario)</td>
-            <td>@Html.TextBoxFor(a => a.Usuario)</td>
-        </tr>
-        <tr>
-            <td>
-                @Html.LabelFor(a => a.Password)
-            </td>
-            <td>
-                @Html.PasswordFor(a => a.Password)
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <input type="submit" class="btn btn-primary" value="Iniciar sesion" />
-            </td>
-            <td></td>
-        </tr>
-    </table>
-</fieldset>
+    <form>
+        <div class="form-group">
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Usuario</label>
+            @Html.TextBoxFor(a => a.Usuario, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Contraseña</label>
+            @Html.PasswordFor(a => a.Password, new { @class = "form-control" })
+        </div>
+        <div>
+            <br />
+            <input type="submit" class="btn btn-primary" value="Iniciar sesion" />
+            <input type="submit" class="btn btn-primary" value="Registrarse" />
+        </div>
+    </form>
 }  

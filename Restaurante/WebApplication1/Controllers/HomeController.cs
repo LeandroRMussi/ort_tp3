@@ -15,7 +15,6 @@ namespace WebApplication1.Controllers
             return RedirectToAction("Login");
         }
 
-
         public ActionResult Login()
         {
             if (Session["Usuario"] != null)
