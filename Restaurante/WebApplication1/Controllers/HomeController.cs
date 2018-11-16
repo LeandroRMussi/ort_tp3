@@ -45,6 +45,10 @@ namespace WebApplication1.Controllers
                         FormsAuthentication.SetAuthCookie(Session["Usuario"].ToString(), true);
                         return RedirectToAction("UserDashBoard");
                         
+                    } else
+                    {
+                        ModelState.AddModelError("LoginFail", "Usuario o contraseña incorrecto");
+                        return View();
                     }
                 }
             }
