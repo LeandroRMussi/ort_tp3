@@ -24,6 +24,11 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+        public ActionResult Registro()
+        {
+            return View();
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Login(PerfilUsuario objUser)
@@ -46,7 +51,7 @@ namespace WebApplication1.Controllers
                         
                     } else
                     {
-                        ModelState.AddModelError("LoginFail", "Usuario o contraseña incorrecto");
+                        ModelState.AddModelError("LoginFail", "Datos incorrectos");
                         return View();
                     }
                 }

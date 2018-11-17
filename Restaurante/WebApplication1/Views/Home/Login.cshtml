@@ -1,6 +1,6 @@
 ﻿@model WebApplication1.PerfilUsuario
 @{
-    ViewBag.Title = "Login";
+    ViewBag.Title = "Ingreso";
 }
 @using (Html.BeginForm("Login", "Home", FormMethod.Post))
 {
@@ -10,7 +10,6 @@
         <div class="form-group">
             @Html.ValidationSummary(false, "", new { @class = "text-danger" })
         </div>
-
         <div class="form-group">
             <label for="exampleInputEmail1">Usuario</label>
             @Html.TextBoxFor(a => a.Usuario, new { @class = "form-control" })
@@ -22,7 +21,11 @@
         <div>
             <br />
             <input type="submit" class="btn btn-primary" value="Iniciar sesion" />
-            <input type="submit" class="btn btn-primary" value="Registrarse" />
         </div>
     </form>
-}  
+}
+    <form>
+        <div class="form-group" style="text-align:right">
+            @Html.ActionLink("Registrarse", "Registro", "Home", new { @Class = "btn btn-warning" })
+        </div>
+    </form>
