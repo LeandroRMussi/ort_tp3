@@ -4,11 +4,11 @@
 
 Finalizado:
  
-.Login (Falta logout y error al logeo)
+.Login
+.Registro (Falta controlador)
 
 Funcionalidades Pendientes:
 
-.Registro (Viste hecha)
 .Seleccion de MESA
 .Seleccion de MENU
 
