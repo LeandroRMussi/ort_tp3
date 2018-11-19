@@ -2,9 +2,9 @@
 @{
     ViewBag.Title = "Ingreso";
 }
+<h2>Restaurante</h2>
 @using (Html.BeginForm("Login", "Home", FormMethod.Post))
 {
-    <h2>Restaurante</h2>
     @Html.AntiForgeryToken()
     <form>
         <div class="form-group">
@@ -24,8 +24,8 @@
         </div>
     </form>
 }
-    <form>
-        <div class="form-group" style="text-align:right">
-            @Html.ActionLink("Registrarse", "Registro", "Home", new { @Class = "btn btn-warning" })
-        </div>
-    </form>
+<form>
+    <div class="form-group" style="text-align:right">
+        @Html.ActionLink("Registrarse", "Registro", "Home", new { @Class = "btn btn-warning" })
+    </div>
+</form>
