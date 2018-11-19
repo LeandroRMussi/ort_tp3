@@ -5,12 +5,8 @@
 Finalizado:
  
 .Login
-.Registro (Falta controlador)
+.Registro
 
-Funcionalidades Pendientes:
-
-.Seleccion de MESA
-.Seleccion de MENU
 
 
 
