@@ -4,8 +4,9 @@
 
 Finalizado:
  
-.Login
-.Registro
+.-Login
+.-Registro
+
 
 
 
