@@ -8,6 +8,7 @@
     <Property Name="Usuario" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="IsActive" Type="bit" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityContainer Name="restauranteModelStoreContainer">
     <EntitySet Name="PerfilUsuario" EntityType="Self.PerfilUsuario" Schema="dbo" store:Type="Tables" />

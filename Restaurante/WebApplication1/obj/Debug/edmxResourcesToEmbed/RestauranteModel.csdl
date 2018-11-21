@@ -8,6 +8,7 @@
     <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="IsActive" Type="Boolean" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityContainer Name="restauranteEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="PerfilUsuario" EntityType="Self.PerfilUsuario" />

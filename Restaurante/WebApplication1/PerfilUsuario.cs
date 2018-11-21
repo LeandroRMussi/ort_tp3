@@ -18,5 +18,6 @@ namespace WebApplication1
         public string Usuario { get; set; }
         public string Password { get; set; }
         public Nullable<bool> IsActive { get; set; }
+        public string Email { get; set; }
     }
 }

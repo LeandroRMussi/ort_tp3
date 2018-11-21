@@ -13,6 +13,7 @@
           <Property Name="Usuario" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="IsActive" Type="bit" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="restauranteModelStoreContainer">
           <EntitySet Name="PerfilUsuario" EntityType="Self.PerfilUsuario" Schema="dbo" store:Type="Tables" />
@@ -29,6 +30,7 @@
           <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IsActive" Type="Boolean" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="restauranteEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="PerfilUsuario" EntityType="Self.PerfilUsuario" />
@@ -42,6 +44,7 @@
           <EntitySetMapping Name="PerfilUsuario">
             <EntityTypeMapping TypeName="restauranteModel.PerfilUsuario">
               <MappingFragment StoreEntitySet="PerfilUsuario">
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
                 <ScalarProperty Name="Usuario" ColumnName="Usuario" />
                 <ScalarProperty Name="Password" ColumnName="Password" />

@@ -4,6 +4,7 @@
     <EntitySetMapping Name="PerfilUsuario">
       <EntityTypeMapping TypeName="restauranteModel.PerfilUsuario">
         <MappingFragment StoreEntitySet="PerfilUsuario">
+          <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
           <ScalarProperty Name="Usuario" ColumnName="Usuario" />
           <ScalarProperty Name="Password" ColumnName="Password" />

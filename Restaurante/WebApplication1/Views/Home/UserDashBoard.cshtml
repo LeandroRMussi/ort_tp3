@@ -5,15 +5,16 @@
 <div style="text-align:center">
     <h1>Seleccion de Mesa</h1>
     <br />
-    <h3>Usuario: @Session["Usuario"].ToString() </h3>
+    <h4>Usuario: @Session["Usuario"].ToString() </h4>
     @if (@Session["isActive"].ToString().AsBool())
     {
-        <h3>Estado: Activo</h3>
+        <h4>Estado: Activo</h4>
     }
     else
     {
-        <h3>Estado: Desactivado</h3>
+        <h4>Estado: Desactivado</h4>
     }
+    <h4>Correo electronico: @Session["Email"].ToString()</h4>
 </div>
     <div class="navbar-collapse collapse">
         @using (Html.BeginForm("LogOff", "Home", FormMethod.Post, new { role = "form" }))

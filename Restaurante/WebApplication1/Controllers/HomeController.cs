@@ -9,6 +9,14 @@ namespace WebApplication1.Controllers
 {
     public class HomeController : Controller
     {
+        public ActionResult Index()
+        {
+            if (Session["Usuario"] != null)
+            {
+                return RedirectToAction("UserDashBoard");
+            }
+            return View();
+        }
 
         public ActionResult Login()
         {
@@ -35,7 +43,7 @@ namespace WebApplication1.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Login");
             }
-            ModelState.AddModelError("LoginFail", "Error, el usuario ya existe en el sistema");
+            ModelState.AddModelError("RegistroFail", "Error, el usuario ya existe en el sistema");
             return View(newUser);
         }
 
@@ -54,6 +62,13 @@ namespace WebApplication1.Controllers
                         obj.IsActive = true;
                         db.SaveChanges();
 
+                        if (obj.Email != null){
+                            Session["Email"] = obj.Email.ToString();
+                        }
+                        else
+                        {
+                            Session["Email"] = "No definido";
+                        }
                         Session["IdUsuario"] = obj.IdUsuario.ToString();
                         Session["Usuario"] = obj.Usuario.ToString();
                         Session["isActive"] = obj.IsActive;
@@ -86,9 +101,6 @@ namespace WebApplication1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff(PerfilUsuario objUser)
         {
-            restauranteEntities db = new restauranteEntities();
-            objUser.IsActive = false;
-            db.SaveChanges();
             Session.Clear();
             FormsAuthentication.SignOut();
             return RedirectToAction("Login");
