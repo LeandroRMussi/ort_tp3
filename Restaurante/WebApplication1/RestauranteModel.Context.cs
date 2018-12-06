@@ -25,6 +25,10 @@ namespace WebApplication1
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<CalendarioReserva> CalendarioReserva { get; set; }
+        public virtual DbSet<Menu> Menu { get; set; }
+        public virtual DbSet<Mesa> Mesa { get; set; }
         public virtual DbSet<PerfilUsuario> PerfilUsuario { get; set; }
+        public virtual DbSet<Reserva> Reserva { get; set; }
     }
 }

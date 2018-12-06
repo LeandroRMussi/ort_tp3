@@ -1,16 +1,71 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="restauranteModelStoreContainer" CdmEntityContainer="restauranteEntities">
-    <EntitySetMapping Name="PerfilUsuario">
-      <EntityTypeMapping TypeName="restauranteModel.PerfilUsuario">
-        <MappingFragment StoreEntitySet="PerfilUsuario">
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
-          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+    <EntitySetMapping Name="CalendarioReserva">
+      <EntityTypeMapping TypeName="restauranteModel.CalendarioReserva">
+        <MappingFragment StoreEntitySet="CalendarioReserva">
+          <ScalarProperty Name="TS" ColumnName="TS" />
+          <ScalarProperty Name="Fechafin" ColumnName="Fechafin" />
+          <ScalarProperty Name="Horainicio" ColumnName="Horainicio" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="IdCalendario" ColumnName="IdCalendario" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Menu">
+      <EntityTypeMapping TypeName="restauranteModel.Menu">
+        <MappingFragment StoreEntitySet="Menu">
+          <ScalarProperty Name="TS" ColumnName="TS" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Postre" ColumnName="Postre" />
+          <ScalarProperty Name="PlatoSecundario" ColumnName="PlatoSecundario" />
+          <ScalarProperty Name="PlatoPrincipal" ColumnName="PlatoPrincipal" />
+          <ScalarProperty Name="IdMenu" ColumnName="IdMenu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mesa">
+      <EntityTypeMapping TypeName="restauranteModel.Mesa">
+        <MappingFragment StoreEntitySet="Mesa">
+          <ScalarProperty Name="TS" ColumnName="TS" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Cantplatos" ColumnName="Cantplatos" />
+          <ScalarProperty Name="Cantsillas" ColumnName="Cantsillas" />
+          <ScalarProperty Name="IdMesa" ColumnName="IdMesa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PerfilUsuario">
+      <EntityTypeMapping TypeName="restauranteModel.PerfilUsuario">
+        <MappingFragment StoreEntitySet="PerfilUsuario">
+          <ScalarProperty Name="TS" ColumnName="TS" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reserva">
+      <EntityTypeMapping TypeName="restauranteModel.Reserva">
+        <MappingFragment StoreEntitySet="Reserva">
+          <ScalarProperty Name="TS" ColumnName="TS" />
+          <ScalarProperty Name="IdCalendario" ColumnName="IdCalendario" />
+          <ScalarProperty Name="IdMesa" ColumnName="IdMesa" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="Estadoreserva" ColumnName="Estadoreserva" />
+          <ScalarProperty Name="IdReserva" ColumnName="IdReserva" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Menues_Mesa" TypeName="restauranteModel.Menues_Mesa" StoreEntitySet="Menues_Mesa">
+      <EndProperty Name="Reserva">
+        <ScalarProperty Name="IdReserva" ColumnName="IdReserva" />
+      </EndProperty>
+      <EndProperty Name="Menu">
+        <ScalarProperty Name="IdMenu" ColumnName="IdMenu" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

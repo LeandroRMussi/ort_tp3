@@ -9,19 +9,20 @@ namespace WebApplication1.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Mesa()
         {
-            if (Session["Usuario"] != null)
+            if (Session["Usuario"] == null)
             {
-                return RedirectToAction("UserDashBoard");
+                Session["Usuario"] = "Sin usuario";
+                //FormsAuthentication.SetAuthCookie(Session["Usuario"].ToString(), true);
+                return View();
             }
-
             return View();
         }
 
         public ActionResult Login()
         {
-            if (Session["Usuario"] != null)
+            if (Session["IdUsuario"] != null)
             {
                 return RedirectToAction("UserDashBoard");
             }
@@ -63,13 +64,8 @@ namespace WebApplication1.Controllers
                         obj.IsActive = true;
                         db.SaveChanges();
 
-                        if (obj.Email != null){
-                            Session["Email"] = obj.Email.ToString();
-                        }
-                        else
-                        {
-                            Session["Email"] = "No definido";
-                        }
+                        
+                        Session["Email"] = obj.Email.ToString();
                         Session["IdUsuario"] = obj.IdUsuario.ToString();
                         Session["Usuario"] = obj.Usuario.ToString();
                         Session["isActive"] = obj.IsActive;

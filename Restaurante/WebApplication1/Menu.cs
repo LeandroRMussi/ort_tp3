@@ -12,20 +12,19 @@ namespace WebApplication1
     using System;
     using System.Collections.Generic;
     
-    public partial class PerfilUsuario
+    public partial class Menu
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PerfilUsuario()
+        public Menu()
         {
             this.Reserva = new HashSet<Reserva>();
-            TS = DateTime.Now;
         }
     
-        public int IdUsuario { get; set; }
-        public string Usuario { get; set; }
-        public string Password { get; set; }
-        public bool IsActive { get; set; }
-        public string Email { get; set; }
+        public int IdMenu { get; set; }
+        public int PlatoPrincipal { get; set; }
+        public int PlatoSecundario { get; set; }
+        public int Postre { get; set; }
+        public string Descripcion { get; set; }
         public System.DateTime TS { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

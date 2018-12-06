@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "Seleccion de mesa";
+}
+<div style="text-align:center">
+    <h1>Hola @Session["Usuario"].ToString()! </h1>
+</div>
+    <section>
+        <div class="form-group">
+            <h2>Reserva tu mesa</h2>
+            <div class="form-group">
+                <p>Rehoncus. Aliquam nibh antegestas id ictum ado. Praesenterto faucibus maleada faucibusnec laeetert metus id laoreet </p>
+                <p>Nullam consectetur orci sed nulla facilisisequaterto. Curabitur vel lorem sit amet nulla perermentum. Aliquam nibh ante, egestas id dictum a, commodo luctus libero.</p>                    
+            </div>
+        </div>
+        <br />
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="~/Images/plato1.jpg" width="700" height="750" class="img-responsive">
+                </div>
+                <div class="col-md-6">
+                    <form class="form-group">
+                        <div class="form-group">
+                            <label for="fecha">
+                                Fecha
+                                <input type="date" name="fecha" class="form-control">
+                            </label>
+                            <label for="hora"> 
+                                Hora
+                                <input type="time" name="hora" min="11:00" max="23:00" class="form-control">
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label>Comensales</label>
+                            <select name="comensales" class="form-control">
+                                <option selected>Selecciona</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select>   
+                        </div>
+                        <div class="form-group">
+                            <label for="mensaje">Comentario</label>
+                            <textarea class="form-control" placeholder="Mensaje:" id="mensaje" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-danger" type="submit">Cancelar</button>
+                            <button class="btn btn-primary" type="submit">Siguiente</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>

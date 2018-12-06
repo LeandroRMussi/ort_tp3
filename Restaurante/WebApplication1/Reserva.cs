@@ -12,23 +12,24 @@ namespace WebApplication1
     using System;
     using System.Collections.Generic;
     
-    public partial class PerfilUsuario
+    public partial class Reserva
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PerfilUsuario()
+        public Reserva()
         {
-            this.Reserva = new HashSet<Reserva>();
-            TS = DateTime.Now;
+            this.Menu = new HashSet<Menu>();
         }
     
+        public int IdReserva { get; set; }
+        public bool Estadoreserva { get; set; }
         public int IdUsuario { get; set; }
-        public string Usuario { get; set; }
-        public string Password { get; set; }
-        public bool IsActive { get; set; }
-        public string Email { get; set; }
+        public int IdMesa { get; set; }
+        public int IdCalendario { get; set; }
         public System.DateTime TS { get; set; }
     
+        public virtual Mesa Mesa { get; set; }
+        public virtual PerfilUsuario PerfilUsuario { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Reserva> Reserva { get; set; }
+        public virtual ICollection<Menu> Menu { get; set; }
     }
 }

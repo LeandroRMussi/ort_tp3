@@ -12,20 +12,18 @@ namespace WebApplication1
     using System;
     using System.Collections.Generic;
     
-    public partial class PerfilUsuario
+    public partial class Mesa
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PerfilUsuario()
+        public Mesa()
         {
             this.Reserva = new HashSet<Reserva>();
-            TS = DateTime.Now;
         }
     
-        public int IdUsuario { get; set; }
-        public string Usuario { get; set; }
-        public string Password { get; set; }
-        public bool IsActive { get; set; }
-        public string Email { get; set; }
+        public int IdMesa { get; set; }
+        public int Cantsillas { get; set; }
+        public int Cantplatos { get; set; }
+        public string Descripcion { get; set; }
         public System.DateTime TS { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
