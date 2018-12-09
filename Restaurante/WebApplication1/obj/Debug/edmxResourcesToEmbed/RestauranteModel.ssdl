@@ -1,15 +1,136 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="restauranteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CalendarioReserva">
+    <Key>
+      <PropertyRef Name="IdCalendario" />
+    </Key>
+    <Property Name="IdCalendario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha" Type="date" />
+    <Property Name="Horainicio" Type="time" Precision="7" />
+    <Property Name="Fechafin" Type="date" />
+    <Property Name="TS" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="IdMenu" />
+    </Key>
+    <Property Name="IdMenu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PlatoPrincipal" Type="int" Nullable="false" />
+    <Property Name="PlatoSecundario" Type="int" Nullable="false" />
+    <Property Name="Postre" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+    <Property Name="TS" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Menues_Mesa">
+    <Key>
+      <PropertyRef Name="IdMenu" />
+      <PropertyRef Name="IdReserva" />
+    </Key>
+    <Property Name="IdMenu" Type="int" Nullable="false" />
+    <Property Name="IdReserva" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Mesa">
+    <Key>
+      <PropertyRef Name="IdMesa" />
+    </Key>
+    <Property Name="IdMesa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cantsillas" Type="int" Nullable="false" />
+    <Property Name="Cantplatos" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+    <Property Name="TS" Type="datetime" Nullable="false" />
+  </EntityType>
   <EntityType Name="PerfilUsuario">
     <Key>
       <PropertyRef Name="IdUsuario" />
     </Key>
     <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Usuario" Type="varchar" MaxLength="50" />
-    <Property Name="Password" Type="varchar" MaxLength="50" />
-    <Property Name="IsActive" Type="bit" />
+    <Property Name="Usuario" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="70" Nullable="false" />
+    <Property Name="TS" Type="datetime" Nullable="false" />
   </EntityType>
+  <EntityType Name="Reserva">
+    <Key>
+      <PropertyRef Name="IdReserva" />
+    </Key>
+    <Property Name="IdReserva" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Estadoreserva" Type="bit" Nullable="false" />
+    <Property Name="IdUsuario" Type="int" Nullable="false" />
+    <Property Name="IdMesa" Type="int" Nullable="false" />
+    <Property Name="IdCalendario" Type="int" Nullable="false" />
+    <Property Name="TS" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Menues_Mesa_Menu">
+    <End Role="Menu" Type="Self.Menu" Multiplicity="1" />
+    <End Role="Menues_Mesa" Type="Self.Menues_Mesa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Menu">
+        <PropertyRef Name="IdMenu" />
+      </Principal>
+      <Dependent Role="Menues_Mesa">
+        <PropertyRef Name="IdMenu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Menues_Mesa_Reserva">
+    <End Role="Reserva" Type="Self.Reserva" Multiplicity="1" />
+    <End Role="Menues_Mesa" Type="Self.Menues_Mesa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reserva">
+        <PropertyRef Name="IdReserva" />
+      </Principal>
+      <Dependent Role="Menues_Mesa">
+        <PropertyRef Name="IdReserva" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reserva_Mesa1">
+    <End Role="Mesa" Type="Self.Mesa" Multiplicity="1" />
+    <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mesa">
+        <PropertyRef Name="IdMesa" />
+      </Principal>
+      <Dependent Role="Reserva">
+        <PropertyRef Name="IdMesa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reserva_PerfilUsuario">
+    <End Role="PerfilUsuario" Type="Self.PerfilUsuario" Multiplicity="1" />
+    <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PerfilUsuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="Reserva">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="restauranteModelStoreContainer">
+    <EntitySet Name="CalendarioReserva" EntityType="Self.CalendarioReserva" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Menues_Mesa" EntityType="Self.Menues_Mesa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mesa" EntityType="Self.Mesa" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PerfilUsuario" EntityType="Self.PerfilUsuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Reserva" EntityType="Self.Reserva" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Menues_Mesa_Menu" Association="Self.FK_Menues_Mesa_Menu">
+      <End Role="Menu" EntitySet="Menu" />
+      <End Role="Menues_Mesa" EntitySet="Menues_Mesa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Menues_Mesa_Reserva" Association="Self.FK_Menues_Mesa_Reserva">
+      <End Role="Reserva" EntitySet="Reserva" />
+      <End Role="Menues_Mesa" EntitySet="Menues_Mesa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reserva_Mesa1" Association="Self.FK_Reserva_Mesa1">
+      <End Role="Mesa" EntitySet="Mesa" />
+      <End Role="Reserva" EntitySet="Reserva" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reserva_PerfilUsuario" Association="Self.FK_Reserva_PerfilUsuario">
+      <End Role="PerfilUsuario" EntitySet="PerfilUsuario" />
+      <End Role="Reserva" EntitySet="Reserva" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

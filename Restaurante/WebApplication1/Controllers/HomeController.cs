@@ -9,15 +9,20 @@ namespace WebApplication1.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Mesa()
         {
-            //return View();
-            return RedirectToAction("Login");
+            if (Session["Usuario"] == null)
+            {
+                Session["Usuario"] = "Sin usuario";
+                //FormsAuthentication.SetAuthCookie(Session["Usuario"].ToString(), true);
+                return View();
+            }
+            return View();
         }
 
         public ActionResult Login()
         {
-            if (Session["Usuario"] != null)
+            if (Session["IdUsuario"] != null)
             {
                 return RedirectToAction("UserDashBoard");
             }
@@ -28,6 +33,22 @@ namespace WebApplication1.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Registro(PerfilUsuario newUser)
+        {
+            restauranteEntities db = new restauranteEntities();
+            var obj = db.PerfilUsuario.Where(a => a.Usuario.Equals(newUser.Usuario) && a.Password.Equals(newUser.Password)).FirstOrDefault();
+            if (obj == null) { 
+                newUser.IsActive = false;
+                db.PerfilUsuario.Add(newUser);
+                db.SaveChanges();
+                return RedirectToAction("Login");
+            }
+            ModelState.AddModelError("RegistroFail", "Error, el usuario ya existe en el sistema");
+            return View(newUser);
+        }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -43,6 +64,8 @@ namespace WebApplication1.Controllers
                         obj.IsActive = true;
                         db.SaveChanges();
 
+                        
+                        Session["Email"] = obj.Email.ToString();
                         Session["IdUsuario"] = obj.IdUsuario.ToString();
                         Session["Usuario"] = obj.Usuario.ToString();
                         Session["isActive"] = obj.IsActive;
@@ -51,7 +74,7 @@ namespace WebApplication1.Controllers
                         
                     } else
                     {
-                        ModelState.AddModelError("LoginFail", "Datos incorrectos");
+                        ModelState.AddModelError("LoginFail", "Error, datos incorrectos");
                         return View();
                     }
                 }
@@ -73,7 +96,7 @@ namespace WebApplication1.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult LogOff()
+        public ActionResult LogOff(PerfilUsuario objUser)
         {
             Session.Clear();
             FormsAuthentication.SignOut();

@@ -14,9 +14,21 @@ namespace WebApplication1
     
     public partial class PerfilUsuario
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public PerfilUsuario()
+        {
+            this.Reserva = new HashSet<Reserva>();
+            TS = DateTime.Now;
+        }
+    
         public int IdUsuario { get; set; }
         public string Usuario { get; set; }
         public string Password { get; set; }
-        public Nullable<bool> IsActive { get; set; }
+        public bool IsActive { get; set; }
+        public string Email { get; set; }
+        public System.DateTime TS { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Reserva> Reserva { get; set; }
     }
 }
