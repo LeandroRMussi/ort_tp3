@@ -4,9 +4,9 @@
 
 Finalizado:
  
-.-Login
-.-Registro
-
+-Login
+-Registro
+-Seleccion de mesa
 
 
 
