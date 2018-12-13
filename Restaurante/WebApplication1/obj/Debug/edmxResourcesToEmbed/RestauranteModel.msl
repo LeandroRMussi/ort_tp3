@@ -5,6 +5,7 @@
       <EntityTypeMapping TypeName="restauranteModel.CalendarioReserva">
         <MappingFragment StoreEntitySet="CalendarioReserva">
           <ScalarProperty Name="TS" ColumnName="TS" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="Fechafin" ColumnName="Fechafin" />
           <ScalarProperty Name="Horainicio" ColumnName="Horainicio" />
           <ScalarProperty Name="Fecha" ColumnName="Fecha" />
@@ -16,6 +17,7 @@
       <EntityTypeMapping TypeName="restauranteModel.Menu">
         <MappingFragment StoreEntitySet="Menu">
           <ScalarProperty Name="TS" ColumnName="TS" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
           <ScalarProperty Name="Postre" ColumnName="Postre" />
           <ScalarProperty Name="PlatoSecundario" ColumnName="PlatoSecundario" />
@@ -28,6 +30,7 @@
       <EntityTypeMapping TypeName="restauranteModel.Mesa">
         <MappingFragment StoreEntitySet="Mesa">
           <ScalarProperty Name="TS" ColumnName="TS" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
           <ScalarProperty Name="Cantplatos" ColumnName="Cantplatos" />
           <ScalarProperty Name="Cantsillas" ColumnName="Cantsillas" />
@@ -39,6 +42,7 @@
       <EntityTypeMapping TypeName="restauranteModel.PerfilUsuario">
         <MappingFragment StoreEntitySet="PerfilUsuario">
           <ScalarProperty Name="TS" ColumnName="TS" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
           <ScalarProperty Name="Password" ColumnName="Password" />
@@ -51,6 +55,7 @@
       <EntityTypeMapping TypeName="restauranteModel.Reserva">
         <MappingFragment StoreEntitySet="Reserva">
           <ScalarProperty Name="TS" ColumnName="TS" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="IdCalendario" ColumnName="IdCalendario" />
           <ScalarProperty Name="IdMesa" ColumnName="IdMesa" />
           <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />

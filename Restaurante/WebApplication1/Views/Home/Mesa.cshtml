@@ -1,54 +1,63 @@
-﻿@{
+﻿@using WebApplication1.Models
+@model ReservaMesa
+@{
     ViewBag.Title = "Seleccion de mesa";
 }
-<div style="text-align:center">   
-    <h1>Hola @Session["Usuario"].ToString()! </h1>
+<div style="text-align:center">
+    <h1>Hola @Session["Usuario"]! </h1>
 </div>
-    <section>
+<section>
+    <div class="form-group">
+        <h2>Reserva tu mesa</h2>
         <div class="form-group">
-            <h2>Reserva tu mesa</h2>
-            <div class="form-group">
-                <p>Rehoncus. Aliquam nibh antegestas id ictum ado. Praesenterto faucibus maleada faucibusnec laeetert metus id laoreet </p>
-                <p>Nullam consectetur orci sed nulla facilisisequaterto. Curabitur vel lorem sit amet nulla perermentum. Aliquam nibh ante, egestas id dictum a, commodo luctus libero.</p>                    
-            </div>
+            <p>Rehoncus. Aliquam nibh antegestas id ictum ado. Praesenterto faucibus maleada faucibusnec laeetert metus id laoreet </p>
+            <p>Nullam consectetur orci sed nulla facilisisequaterto. Curabitur vel lorem sit amet nulla perermentum. Aliquam nibh ante, egestas id dictum a, commodo luctus libero.</p>
         </div>
-        <br />
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <img src="~/Images/plato1.jpg" width="700" height="750" class="img-responsive">
-                </div>
-                <div class="col-md-6">
+    </div>
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="~/Images/plato1.jpg" width="700" height="750" class="img-responsive">
+            </div>
+            <div class="col-md-6">
+                @using (Html.BeginForm("Menu", "Home", FormMethod.Post))
+                {
                     <form class="form-group">
                         <div class="form-group">
                             <label for="fecha">
                                 Fecha:
-                                <input type="date" required name="fecha" class="form-control" min="@DateTime.Now.ToString("yyyy-MM-dd")" value="@DateTime.Now.ToString("yyyy-MM-dd")">
+                                @Html.TextBoxFor(newReserva => newReserva.Fecha, new { @name = "fecha", @class = "form-control", @type = "date", @required = "required", @min = DateTime.Now.ToString("yyyy-MM-dd"), Value = DateTime.Now.ToString("yyyy-MM-dd") })
                             </label>
-                            <label for="hora"> 
+                            <label for="hora">
                                 Hora
-                                <input type="time" required name="hora" value="19:00" min="13:00" max="23:00" class="form-control">
+                                @Html.TextBoxFor(newReserva => newReserva.Horainicio, new { @name = "hora", @class = "form-control", @type = "time", @required = "required", @min = "13:00", @max = "23:00", Value = "19:00" })
                             </label>
                         </div>
                         <div class="form-group">
                             <label>Comensales</label>
-                            <select name="comensales" required class="form-control">
-                                <option selected>Selecciona</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                            </select>   
+                            @Html.DropDownListFor(newReserva => newReserva.Comensales,
+                                new SelectList(Enum.GetValues(typeof(ReservaMesa.CantComensales))),
+                                "Seleccionar cantidad",
+                                new { @class = "form-control", @required = "required" })
                         </div>
                         <div class="form-group">
                             <label for="mensaje">Comentario</label>
-                            <textarea class="form-control" required placeholder="Mensaje:" id="mensaje" rows="3"></textarea>
+                            @Html.TextAreaFor(newReserva => newReserva.Descripcion, new { @class = "form-control", @rows = "3", @required = "required" })
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-danger" type="submit">Cancelar</button>
                             <button class="btn btn-primary" type="submit">Siguiente</button>
                         </div>
                     </form>
-                </div>
+                }
+                    <div class="form-group">
+                        @using (Html.BeginForm("LogOff", "Home", FormMethod.Post, new { role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <input type="submit" value="Cancelar" class="btn btn-danger"/>
+                        }
+                    </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>

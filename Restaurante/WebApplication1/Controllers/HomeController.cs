@@ -11,12 +11,25 @@ namespace WebApplication1.Controllers
     {
         public ActionResult Mesa()
         {
-            if (Session["Usuario"] == null)
+            if (Session["IdUsuario"] == null)
             {
-                Session["Usuario"] = "Sin usuario";
-                //FormsAuthentication.SetAuthCookie(Session["Usuario"].ToString(), true);
+                return RedirectToAction("Login");
+            }
+
+            return View();
+        }
+
+        public ActionResult Menu(Models.ReservaMesa reservamesa)
+        {
+            if (Session["IdUsuario"] != null)
+            {
+                Session["Comensales"] = reservamesa.Comensales.ToString();
+                Session["Fecha"] = reservamesa.Fecha.ToString();
+                Session["Horainicio"] = reservamesa.Horainicio.ToString();
+                Session["Mensaje"] = reservamesa.Descripcion.ToString();
                 return View();
             }
+        
             return View();
         }
 
@@ -24,7 +37,7 @@ namespace WebApplication1.Controllers
         {
             if (Session["IdUsuario"] != null)
             {
-                return RedirectToAction("UserDashBoard");
+                return RedirectToAction("Mesa");
             }
             return View();
         }
@@ -41,6 +54,7 @@ namespace WebApplication1.Controllers
             var obj = db.PerfilUsuario.Where(a => a.Usuario.Equals(newUser.Usuario) && a.Password.Equals(newUser.Password)).FirstOrDefault();
             if (obj == null) { 
                 newUser.IsActive = false;
+                newUser.TS = DateTime.Now;
                 db.PerfilUsuario.Add(newUser);
                 db.SaveChanges();
                 return RedirectToAction("Login");
@@ -70,7 +84,7 @@ namespace WebApplication1.Controllers
                         Session["Usuario"] = obj.Usuario.ToString();
                         Session["isActive"] = obj.IsActive;
                         FormsAuthentication.SetAuthCookie(Session["Usuario"].ToString(), true);
-                        return RedirectToAction("UserDashBoard");
+                        return RedirectToAction("Mesa");
                         
                     } else
                     {

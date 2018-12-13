@@ -25,6 +25,7 @@ namespace WebApplication1
         public int PlatoSecundario { get; set; }
         public int Postre { get; set; }
         public string Descripcion { get; set; }
+        public bool Estado { get; set; }
         public System.DateTime TS { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

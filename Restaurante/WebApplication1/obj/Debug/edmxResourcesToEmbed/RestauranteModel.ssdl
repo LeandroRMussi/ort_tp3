@@ -8,6 +8,7 @@
     <Property Name="Fecha" Type="date" />
     <Property Name="Horainicio" Type="time" Precision="7" />
     <Property Name="Fechafin" Type="date" />
+    <Property Name="Estado" Type="bit" Nullable="false" />
     <Property Name="TS" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Menu">
@@ -19,6 +20,7 @@
     <Property Name="PlatoSecundario" Type="int" Nullable="false" />
     <Property Name="Postre" Type="int" Nullable="false" />
     <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+    <Property Name="Estado" Type="bit" Nullable="false" />
     <Property Name="TS" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Menues_Mesa">
@@ -37,6 +39,7 @@
     <Property Name="Cantsillas" Type="int" Nullable="false" />
     <Property Name="Cantplatos" Type="int" Nullable="false" />
     <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+    <Property Name="Estado" Type="bit" Nullable="false" />
     <Property Name="TS" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="PerfilUsuario">
@@ -48,6 +51,7 @@
     <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
     <Property Name="Email" Type="varchar" MaxLength="70" Nullable="false" />
+    <Property Name="Estado" Type="bit" Nullable="false" />
     <Property Name="TS" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Reserva">
@@ -59,6 +63,7 @@
     <Property Name="IdUsuario" Type="int" Nullable="false" />
     <Property Name="IdMesa" Type="int" Nullable="false" />
     <Property Name="IdCalendario" Type="int" Nullable="false" />
+    <Property Name="Estado" Type="bit" Nullable="false" />
     <Property Name="TS" Type="datetime" Nullable="false" />
   </EntityType>
   <Association Name="FK_Menues_Mesa_Menu">
@@ -85,7 +90,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Reserva_Mesa1">
+  <Association Name="FK_Reserva_CalendarioReserva">
+    <End Role="CalendarioReserva" Type="Self.CalendarioReserva" Multiplicity="1" />
+    <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CalendarioReserva">
+        <PropertyRef Name="IdCalendario" />
+      </Principal>
+      <Dependent Role="Reserva">
+        <PropertyRef Name="IdCalendario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reserva_Mesa">
     <End Role="Mesa" Type="Self.Mesa" Multiplicity="1" />
     <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
     <ReferentialConstraint>
@@ -124,7 +141,11 @@
       <End Role="Reserva" EntitySet="Reserva" />
       <End Role="Menues_Mesa" EntitySet="Menues_Mesa" />
     </AssociationSet>
-    <AssociationSet Name="FK_Reserva_Mesa1" Association="Self.FK_Reserva_Mesa1">
+    <AssociationSet Name="FK_Reserva_CalendarioReserva" Association="Self.FK_Reserva_CalendarioReserva">
+      <End Role="CalendarioReserva" EntitySet="CalendarioReserva" />
+      <End Role="Reserva" EntitySet="Reserva" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reserva_Mesa" Association="Self.FK_Reserva_Mesa">
       <End Role="Mesa" EntitySet="Mesa" />
       <End Role="Reserva" EntitySet="Reserva" />
     </AssociationSet>

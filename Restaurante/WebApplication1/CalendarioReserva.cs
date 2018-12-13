@@ -14,10 +14,20 @@ namespace WebApplication1
     
     public partial class CalendarioReserva
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CalendarioReserva()
+        {
+            this.Reserva = new HashSet<Reserva>();
+        }
+    
         public int IdCalendario { get; set; }
         public Nullable<System.DateTime> Fecha { get; set; }
         public Nullable<System.TimeSpan> Horainicio { get; set; }
         public Nullable<System.DateTime> Fechafin { get; set; }
+        public bool Estado { get; set; }
         public System.DateTime TS { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Reserva> Reserva { get; set; }
     }
 }

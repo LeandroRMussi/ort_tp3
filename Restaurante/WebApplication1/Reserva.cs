@@ -25,8 +25,10 @@ namespace WebApplication1
         public int IdUsuario { get; set; }
         public int IdMesa { get; set; }
         public int IdCalendario { get; set; }
+        public bool Estado { get; set; }
         public System.DateTime TS { get; set; }
     
+        public virtual CalendarioReserva CalendarioReserva { get; set; }
         public virtual Mesa Mesa { get; set; }
         public virtual PerfilUsuario PerfilUsuario { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

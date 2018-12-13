@@ -18,7 +18,6 @@ namespace WebApplication1
         public PerfilUsuario()
         {
             this.Reserva = new HashSet<Reserva>();
-            TS = DateTime.Now;
         }
     
         public int IdUsuario { get; set; }
@@ -26,6 +25,7 @@ namespace WebApplication1
         public string Password { get; set; }
         public bool IsActive { get; set; }
         public string Email { get; set; }
+        public bool Estado { get; set; }
         public System.DateTime TS { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

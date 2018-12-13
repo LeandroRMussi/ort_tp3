@@ -6,7 +6,11 @@
     <EntitySet Name="Mesa" EntityType="restauranteModel.Mesa" />
     <EntitySet Name="PerfilUsuario" EntityType="restauranteModel.PerfilUsuario" />
     <EntitySet Name="Reserva" EntityType="restauranteModel.Reserva" />
-    <AssociationSet Name="FK_Reserva_Mesa1" Association="restauranteModel.FK_Reserva_Mesa1">
+    <AssociationSet Name="FK_Reserva_CalendarioReserva" Association="restauranteModel.FK_Reserva_CalendarioReserva">
+      <End Role="CalendarioReserva" EntitySet="CalendarioReserva" />
+      <End Role="Reserva" EntitySet="Reserva" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reserva_Mesa" Association="restauranteModel.FK_Reserva_Mesa">
       <End Role="Mesa" EntitySet="Mesa" />
       <End Role="Reserva" EntitySet="Reserva" />
     </AssociationSet>
@@ -27,7 +31,9 @@
     <Property Name="Fecha" Type="DateTime" Precision="0" />
     <Property Name="Horainicio" Type="Time" Precision="7" />
     <Property Name="Fechafin" Type="DateTime" Precision="0" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
     <Property Name="TS" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Reserva" Relationship="restauranteModel.FK_Reserva_CalendarioReserva" FromRole="CalendarioReserva" ToRole="Reserva" />
   </EntityType>
   <EntityType Name="Menu">
     <Key>
@@ -38,6 +44,7 @@
     <Property Name="PlatoSecundario" Type="Int32" Nullable="false" />
     <Property Name="Postre" Type="Int32" Nullable="false" />
     <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
     <Property Name="TS" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="Reserva" Relationship="restauranteModel.Menues_Mesa" FromRole="Menu" ToRole="Reserva" />
   </EntityType>
@@ -49,8 +56,9 @@
     <Property Name="Cantsillas" Type="Int32" Nullable="false" />
     <Property Name="Cantplatos" Type="Int32" Nullable="false" />
     <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
     <Property Name="TS" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="Reserva" Relationship="restauranteModel.FK_Reserva_Mesa1" FromRole="Mesa" ToRole="Reserva" />
+    <NavigationProperty Name="Reserva" Relationship="restauranteModel.FK_Reserva_Mesa" FromRole="Mesa" ToRole="Reserva" />
   </EntityType>
   <EntityType Name="PerfilUsuario">
     <Key>
@@ -61,6 +69,7 @@
     <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="IsActive" Type="Boolean" Nullable="false" />
     <Property Name="Email" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
     <Property Name="TS" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="Reserva" Relationship="restauranteModel.FK_Reserva_PerfilUsuario" FromRole="PerfilUsuario" ToRole="Reserva" />
   </EntityType>
@@ -73,12 +82,26 @@
     <Property Name="IdUsuario" Type="Int32" Nullable="false" />
     <Property Name="IdMesa" Type="Int32" Nullable="false" />
     <Property Name="IdCalendario" Type="Int32" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
     <Property Name="TS" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="Mesa" Relationship="restauranteModel.FK_Reserva_Mesa1" FromRole="Reserva" ToRole="Mesa" />
+    <NavigationProperty Name="CalendarioReserva" Relationship="restauranteModel.FK_Reserva_CalendarioReserva" FromRole="Reserva" ToRole="CalendarioReserva" />
+    <NavigationProperty Name="Mesa" Relationship="restauranteModel.FK_Reserva_Mesa" FromRole="Reserva" ToRole="Mesa" />
     <NavigationProperty Name="PerfilUsuario" Relationship="restauranteModel.FK_Reserva_PerfilUsuario" FromRole="Reserva" ToRole="PerfilUsuario" />
     <NavigationProperty Name="Menu" Relationship="restauranteModel.Menues_Mesa" FromRole="Reserva" ToRole="Menu" />
   </EntityType>
-  <Association Name="FK_Reserva_Mesa1">
+  <Association Name="FK_Reserva_CalendarioReserva">
+    <End Type="restauranteModel.CalendarioReserva" Role="CalendarioReserva" Multiplicity="1" />
+    <End Type="restauranteModel.Reserva" Role="Reserva" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CalendarioReserva">
+        <PropertyRef Name="IdCalendario" />
+      </Principal>
+      <Dependent Role="Reserva">
+        <PropertyRef Name="IdCalendario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reserva_Mesa">
     <End Type="restauranteModel.Mesa" Role="Mesa" Multiplicity="1" />
     <End Type="restauranteModel.Reserva" Role="Reserva" Multiplicity="*" />
     <ReferentialConstraint>
