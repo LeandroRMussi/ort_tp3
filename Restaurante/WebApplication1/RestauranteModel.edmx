@@ -21,9 +21,9 @@
             <PropertyRef Name="IdMenu" />
           </Key>
           <Property Name="IdMenu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PlatoPrincipal" Type="int" Nullable="false" />
-          <Property Name="PlatoSecundario" Type="int" Nullable="false" />
-          <Property Name="Postre" Type="int" Nullable="false" />
+          <Property Name="PlatoPrincipal" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PlatoSecundario" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Postre" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="50" />
           <Property Name="Estado" Type="bit" Nullable="false" />
           <Property Name="TS" Type="datetime" Nullable="false" />
@@ -67,7 +67,7 @@
           <Property Name="Estadoreserva" Type="bit" Nullable="false" />
           <Property Name="IdUsuario" Type="int" Nullable="false" />
           <Property Name="IdMesa" Type="int" Nullable="false" />
-          <Property Name="IdCalendario" Type="int" Nullable="false" />
+          <Property Name="IdCalendario" Type="int" />
           <Property Name="Estado" Type="bit" Nullable="false" />
           <Property Name="TS" Type="datetime" Nullable="false" />
         </EntityType>
@@ -96,7 +96,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Reserva_CalendarioReserva">
-          <End Role="CalendarioReserva" Type="Self.CalendarioReserva" Multiplicity="1" />
+          <End Role="CalendarioReserva" Type="Self.CalendarioReserva" Multiplicity="0..1" />
           <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CalendarioReserva">
@@ -203,9 +203,9 @@
             <PropertyRef Name="IdMenu" />
           </Key>
           <Property Name="IdMenu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PlatoPrincipal" Type="Int32" Nullable="false" />
-          <Property Name="PlatoSecundario" Type="Int32" Nullable="false" />
-          <Property Name="Postre" Type="Int32" Nullable="false" />
+          <Property Name="PlatoPrincipal" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PlatoSecundario" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Postre" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Estado" Type="Boolean" Nullable="false" />
           <Property Name="TS" Type="DateTime" Nullable="false" Precision="3" />
@@ -244,7 +244,7 @@
           <Property Name="Estadoreserva" Type="Boolean" Nullable="false" />
           <Property Name="IdUsuario" Type="Int32" Nullable="false" />
           <Property Name="IdMesa" Type="Int32" Nullable="false" />
-          <Property Name="IdCalendario" Type="Int32" Nullable="false" />
+          <Property Name="IdCalendario" Type="Int32" />
           <Property Name="Estado" Type="Boolean" Nullable="false" />
           <Property Name="TS" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="CalendarioReserva" Relationship="restauranteModel.FK_Reserva_CalendarioReserva" FromRole="Reserva" ToRole="CalendarioReserva" />
@@ -253,7 +253,7 @@
           <NavigationProperty Name="Menu" Relationship="restauranteModel.Menues_Mesa" FromRole="Reserva" ToRole="Menu" />
         </EntityType>
         <Association Name="FK_Reserva_CalendarioReserva">
-          <End Type="restauranteModel.CalendarioReserva" Role="CalendarioReserva" Multiplicity="1" />
+          <End Type="restauranteModel.CalendarioReserva" Role="CalendarioReserva" Multiplicity="0..1" />
           <End Type="restauranteModel.Reserva" Role="Reserva" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CalendarioReserva">

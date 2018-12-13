@@ -96,7 +96,7 @@ namespace WebApplication1.Controllers
             return View(objUser);
         }
 
-        public ActionResult UserDashBoard()
+        public ActionResult UserDashBoard(Menu menu)
         {
             if (Session["IdUsuario"] != null)
             {
@@ -119,12 +119,19 @@ namespace WebApplication1.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Confirm(Reserva reserva)
+        public ActionResult Confirm(Mesa mesa)
         {
             restauranteEntities db = new restauranteEntities();
-            reserva.
+            Reserva obj = new Reserva();
+            obj.Estadoreserva = true;
+            int i=0;
+            int.TryParse(Session["IdUsuario"].ToString(), out i);
+            obj.IdUsuario = i;
+            obj.IdMesa = 1;
+            obj.TS = DateTime.Now;
 
-            db.Reserva.Add();
+            db.Reserva.Add(obj);
+            db.SaveChanges();
             Session.Clear();
             FormsAuthentication.SignOut();
             return RedirectToAction("Login");

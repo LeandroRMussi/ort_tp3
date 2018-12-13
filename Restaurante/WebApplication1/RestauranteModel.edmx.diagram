@@ -4,11 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="60d74b301f014adeacbac0d016e51e26" Name="Diagram1" ZoomLevel="105">
-        <EntityTypeShape EntityType="restauranteModel.CalendarioReserva" Width="1.5" PointX="0.75" PointY="1.375" />
-        <EntityTypeShape EntityType="restauranteModel.Menu" Width="1.5" PointX="0.75" PointY="12.125" />
-        <EntityTypeShape EntityType="restauranteModel.Mesa" Width="1.5" PointX="0.75" PointY="5.625" />
-        <EntityTypeShape EntityType="restauranteModel.PerfilUsuario" Width="1.5" PointX="0.75" PointY="8.75" />
+      <Diagram DiagramId="60d74b301f014adeacbac0d016e51e26" Name="Diagram1" ZoomLevel="79">
+        <EntityTypeShape EntityType="restauranteModel.CalendarioReserva" Width="1.5" PointX="0.75" PointY="5.625" />
+        <EntityTypeShape EntityType="restauranteModel.Menu" Width="1.5" PointX="0.75" PointY="11.875" />
+        <EntityTypeShape EntityType="restauranteModel.Mesa" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="restauranteModel.PerfilUsuario" Width="1.5" PointX="0.75" PointY="1.25" />
         <EntityTypeShape EntityType="restauranteModel.Reserva" Width="1.5" PointX="3" PointY="1" />
         <AssociationConnector Association="restauranteModel.FK_Reserva_CalendarioReserva" />
         <AssociationConnector Association="restauranteModel.FK_Reserva_Mesa" />

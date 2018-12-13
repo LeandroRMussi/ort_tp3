@@ -21,9 +21,9 @@ namespace WebApplication1
         }
     
         public int IdMenu { get; set; }
-        public int PlatoPrincipal { get; set; }
-        public int PlatoSecundario { get; set; }
-        public int Postre { get; set; }
+        public string PlatoPrincipal { get; set; }
+        public string PlatoSecundario { get; set; }
+        public string Postre { get; set; }
         public string Descripcion { get; set; }
         public bool Estado { get; set; }
         public System.DateTime TS { get; set; }

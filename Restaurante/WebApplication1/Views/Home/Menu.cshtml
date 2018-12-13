@@ -2,6 +2,8 @@
 @{
     ViewBag.Title = "Menu";
 }
+@using (Html.BeginForm("UserDashBoard", "Home", FormMethod.Post))
+{ 
 <div id="fh5co-featured" data-section="features">
     <div class="container">
         <div class="row text-center fh5co-heading row-padded">
@@ -13,7 +15,7 @@
         <div class="row">
             <div class="fh5co-grid">
                 <div class="fh5co-v-half">
-                    @Html.ActionLink(" ", "UserDashBoard", "Home", new { @class = "fh5co-v-col-2 fh5co-bg-img", @style="background-image: url(../../Images/espaguetis-al-pesto.jpg)",  })
+                    @Html.ActionLink(" ", "UserDashBoard", "Home", new { @class = "fh5co-v-col-2 fh5co-bg-img", @style = "background-image: url(../../Images/espaguetis-al-pesto.jpg)", Value = 1 })
                     <!--<div class="fh5co-v-col-2 fh5co-bg-img" style="background-image: url(../../Images/espaguetis-al-pesto.jpg)"></div>-->
                     <div class="fh5co-v-col-2 fh5co-text fh5co-special-1 arrow-left">
                         <h2>Espaguetis al pesto</h2>
@@ -23,7 +25,7 @@
                 </div>
                 <div class="fh5co-v-half">
                     <div class="fh5co-h-row-2 ">
-                        @Html.ActionLink(" ", "UserDashBoard", "Home", new { @class = "fh5co-v-col-2 fh5co-bg-img", @style = "background-image: url(../../Images/pollo-al-horno.jpg)", })
+                        @Html.ActionLink(" ", "UserDashBoard", "Home", new { @class = "fh5co-v-col-2 fh5co-bg-img", @style = "background-image: url(../../Images/pollo-al-horno.jpg)", Value = 4 })
                         <!--<div class="fh5co-v-col-2 fh5co-bg-img" style="background-image: url(../../Images/pollo-al-horno.jpg)"></div>-->
                         <div class="fh5co-v-col-2 fh5co-text arrow-left">
                             <h2>Pollo al horno con arroz</h2>
@@ -34,7 +36,8 @@
                 </div>
                 <div class="fh5co-v-half">
                     <div class="fh5co-h-row-2 ">
-                        <div class="fh5co-v-col-2 fh5co-bg-img" style="background-image: url(../../Images/grillada.jpg)"></div>
+                        @Html.ActionLink(" ", "UserDashBoard", "Home", new { @class = "fh5co-v-col-2 fh5co-bg-img", @style = "background-image: url(../../Images/grillada.jpg)", Value = 2 })
+                        <!--<div class="fh5co-v-col-2 fh5co-bg-img" style="background-image: url(../../Images/grillada.jpg)"></div>-->
                         <div class="fh5co-v-col-2 fh5co-text arrow-left">
                             <h2>Pollo al horno con arroz</h2>
                             <span class="pricing">$610.00</span>
@@ -44,7 +47,8 @@
                 </div>
                 <div class="fh5co-v-half">
                     <div class="fh5co-h-row-2 ">
-                        <div class="fh5co-v-col-2 fh5co-bg-img" style="background-image: url(../../Images/menuparrilla.jpg)"></div>
+                        @Html.ActionLink(" ", "UserDashBoard", "Home", new { @class = "fh5co-v-col-2 fh5co-bg-img", @style = "background-image: url(../../Images/menuparrilla.jpg)", Value = 3 })
+                        <!--<div class="fh5co-v-col-2 fh5co-bg-img" style="background-image: url(../../Images/menuparrilla.jpg)"></div>-->
                         <div class="fh5co-v-col-2 fh5co-text fh5co-special-1 arrow-left">
                             <h2>Pollo al horno con arroz</h2>
                             <span class="pricing">$670.00</span>
@@ -54,7 +58,8 @@
                 </div>
                 <div class="fh5co-v-half">
                     <div class="fh5co-h-row-2 ">
-                        <div class="fh5co-v-col-2 fh5co-bg-img" style="background-image: url(../../Images/chocolate_avellana.jpg)"></div>
+                        @Html.ActionLink(" ", "UserDashBoard", "Home", new { @class = "fh5co-v-col-2 fh5co-bg-img", @style = "background-image: url(../../Images/chocolate_avellana.jpg)", Value = 4 })
+                        <!--<div class="fh5co-v-col-2 fh5co-bg-img" style="background-image: url(../../Images/chocolate_avellana.jpg)"></div>-->
                         <div class="fh5co-v-col-2 fh5co-text fh5co-special-1 arrow-left">
                             <h2>Pollo al horno con arroz</h2>
                             <span class="pricing">$121.00</span>
@@ -64,7 +69,8 @@
                 </div>
                 <div class="fh5co-v-half">
                     <div class="fh5co-h-row-2 ">
-                        <div class="fh5co-v-col-2 fh5co-bg-img" style="background-image: url(../../Images/cheese-cake.jpg)"></div>
+                        @Html.ActionLink(" ", "UserDashBoard", "Home", new { @class = "fh5co-v-col-2 fh5co-bg-img", @style = "background-image: url(../../Images/cheese-cake.jpg)", Value = 5 })
+                        <!--<div class="fh5co-v-col-2 fh5co-bg-img" style="background-image: url(../../Images/cheese-cake.jpg)"></div>-->
                         <div class="fh5co-v-col-2 fh5co-text arrow-left">
                             <h2>Pollo al horno con arroz</h2>
                             <span class="pricing">$92.00</span>
@@ -75,6 +81,7 @@
             </div>
         </div>
     </div>
-    <br />
-    <br />
-
+</div>
+<br />
+<br />
+}

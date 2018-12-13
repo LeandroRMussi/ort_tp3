@@ -24,7 +24,7 @@ namespace WebApplication1
         public bool Estadoreserva { get; set; }
         public int IdUsuario { get; set; }
         public int IdMesa { get; set; }
-        public int IdCalendario { get; set; }
+        public Nullable<int> IdCalendario { get; set; }
         public bool Estado { get; set; }
         public System.DateTime TS { get; set; }
     
