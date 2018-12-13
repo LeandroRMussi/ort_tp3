@@ -2,10 +2,34 @@
 @{
     ViewBag.Title = "Menu";
 }
-
-<h2>Menu</h2>
-
-<h4>@Session["Usuario"]</h4>
-<h4>@Session["Comensales"]</h4>
-<h4>@Session["Fecha"]</h4>
-<p>@Session["Mensaje"]</p>
+<div id="fh5co-featured" data-section="features">
+    <div class="container">
+        <div class="row text-center fh5co-heading row-padded">
+            <div class="col-md-8 col-md-offset-2">
+                <h2 class="heading ">Menu</h2>
+                <p class="sub-heading">Para el deleite de nuestros clientes</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="fh5co-grid">
+                <div class="fh5co-v-half">
+                    <div class="fh5co-v-col-2 fh5co-bg-img" style="background-image: url(../../Images/espaguetis-al-pesto.jpg)"></div>
+                    <div class="fh5co-v-col-2 fh5co-text fh5co-special-1 arrow-left">
+                        <h2>Espaguetis al pesto</h2>
+                        <span class="pricing">$156.00</span>
+                        <p>El pesto es una salsa con mucha personalidad hecha a base de albahaca y parmesano.</p>
+                    </div>
+                </div>
+                <div class="fh5co-v-half">
+                    <div class="fh5co-h-row-2 ">
+                        <div class="fh5co-v-col-2 fh5co-bg-img" style="background-image: url(../../Images/pollo-al-horno.jpg)"></div>
+                        <div class="fh5co-v-col-2 fh5co-text arrow-left">
+                            <h2>Pollo al horno con arroz</h2>
+                            <span class="pricing">$210.00</span>
+                            <p> Pollo crujiente, está casi para comerse hasta los huesos. La cobertura exterior, aparte de ser crujiente, está deliciosa..</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
