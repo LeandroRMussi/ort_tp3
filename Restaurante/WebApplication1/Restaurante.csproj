@@ -305,7 +305,11 @@
     <Content Include="Images\0103-served-plate_128.png" />
     <Content Include="Images\0103-served-plate_64.png" />
     <Content Include="Images\0402-chef.png" />
+    <Content Include="Images\cheese-cake.jpg" />
+    <Content Include="Images\chocolate_avellana.jpg" />
     <Content Include="Images\espaguetis-al-pesto.jpg" />
+    <Content Include="Images\grillada.jpg" />
+    <Content Include="Images\menuparrilla.jpg" />
     <Content Include="Images\plato1.jpg" />
     <Content Include="Images\pollo-al-horno.jpg" />
     <Content Include="Images\res_img_1.jpg" />

@@ -13,7 +13,6 @@ namespace WebApplication1.Models
         public Nullable<System.TimeSpan> Horainicio { get; set; }
         public enum CantComensales
         {
-            Uno = 1,
             Dos = 2,
             Tres = 3,
             Cuatro = 4,
