@@ -19,7 +19,6 @@ namespace WebApplication1.Controllers
             return View();
         }
 
-        [HttpPost]
         public ActionResult Menu(Models.ReservaMesa reservamesa)
         {
             if (Session["IdUsuario"] != null)
@@ -113,6 +112,19 @@ namespace WebApplication1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff(PerfilUsuario objUser)
         {
+            Session.Clear();
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Login");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Confirm(Reserva reserva)
+        {
+            restauranteEntities db = new restauranteEntities();
+            reserva.
+
+            db.Reserva.Add();
             Session.Clear();
             FormsAuthentication.SignOut();
             return RedirectToAction("Login");

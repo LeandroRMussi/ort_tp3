@@ -37,14 +37,21 @@
                         </div>
                         <div class="form-group">
                             <label>Comensales</label>
-                            @Html.DropDownListFor(newReserva => newReserva.Comensales,
-                                new SelectList(Enum.GetValues(typeof(ReservaMesa.CantComensales))),
-                                "Seleccionar cantidad",
-                                new { @class = "form-control", @required = "required" })
+                            <select class="form-control" data-val="true" data-val-number="El campo Comensales debe ser un número." data-val-required="El campo Comensales es obligatorio." id="Comensales" name="Comensales" required="required">
+                                <option value="">Seleccionar cantidad</option>
+                                <option value="1">Uno</option>
+                                <option value="2">Dos</option>
+                                <option value="3">Tres</option>
+                                <option value="4">Cuatro</option>
+                                <option value="5">Cinco</option>
+                                <option value="6">Seis</option>
+                                <option value="7">Siete</option>
+                                <option value="8">Ocho</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="mensaje">Comentario</label>
-                            @Html.TextAreaFor(newReserva => newReserva.Descripcion, new { @class = "form-control", @rows = "3", @required = "required", @pattern = ".{5,10}", @name = "mensaje" })
+                            @Html.TextAreaFor(newReserva => newReserva.Descripcion, new { @class = "form-control", @rows = "3", @required = "required", @name = "mensaje" })
                         </div>
                         <div class="form-group">
                             <button class="btn btn-primary" type="submit">Siguiente</button>
