@@ -123,13 +123,27 @@ namespace WebApplication1.Controllers
         {
             restauranteEntities db = new restauranteEntities();
             Reserva obj = new Reserva();
+            int sillas;
+            int.TryParse(Session["Comensales"].ToString(), out sillas);
+            if (sillas == 1)
+            {
+                sillas = 2;
+            } else if (sillas > 4 && sillas < 8)
+            {
+                sillas = 8;
+            } else if (sillas < 4 && sillas > 2)
+            {
+                sillas = 4;
+            }
+            Mesa objMesa = db.Mesa.Where(a => a.Cantsillas == sillas && a.Estado == false).FirstOrDefault();
+            objMesa.Estado = true;
+
             obj.Estadoreserva = true;
             int i=0;
             int.TryParse(Session["IdUsuario"].ToString(), out i);
             obj.IdUsuario = i;
-            obj.IdMesa = 1;
-            obj.TS = DateTime.Now;
-
+            obj.IdMesa = objMesa.IdMesa;
+            obj.TS = DateTime.Now;            
             db.Reserva.Add(obj);
             db.SaveChanges();
             Session.Clear();
